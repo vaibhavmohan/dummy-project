@@ -1,0 +1,282 @@
+.sidebar-content {
+    position: relative;
+    padding-bottom: 8px;
+    height: 92vh;
+}
+
+.w-1 {
+    padding-left: 7px;
+}
+
+.w-2 {
+    padding-left: 9px;
+}
+
+.w-3 {
+    margin-left: 6px;
+}
+
+::ng-deep .btnDesign {
+    border-radius: inherit;
+}
+
+.mat-table {
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.mat-row,
+.mat-header-row {
+    display: table-row;
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    line-height: 0.538462;
+}
+
+.mat-scroll {
+    overflow: auto;
+}
+
+.mat-row,
+.mat-header-row[_ngcontent-c8] {
+    display: table-row;
+    width: 450vw;
+    font-size: 13px;
+}
+
+.w-4 {
+    overflow: auto;
+}
+
+::ng-deep .mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 14px 20px 14px 13px;
+    line-break: unset;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    position: sticky;
+    font-size: 14px;
+}
+
+.buttonElment {
+    width: 132px;
+}
+
+.btnColor {
+    background-color: #c52726;
+    color: #fff;
+}
+
+.btnColor:hover {
+    background-color: #26257e;
+    color: #fff;
+}
+
+.btnDesign {
+    border-color: #c52827;
+    background: #c52827;
+    color: #fff !important;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.btnDesign:hover {
+    border-color: #26257e;
+    background: #26257e;
+}
+
+agm-map {
+    height: 500px;
+}
+
+.modal-cnt {
+    background-color: #04040469;
+    display: block!important;
+}
+
+.modal-cnt .modal-content {
+    border-radius: 8px;
+}
+
+.modal-cnt .modal-dialog {
+    width: 80%;
+}
+
+.modal-cnt .modal-header .close {
+    top: 20px;
+    font-weight: 800;
+    font-size: 28px;
+}
+.modal-header{
+    text-align: center !important;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.modal-cnt .modal-body {
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+}
+
+.modal-cnt .modal-body .alert {
+    margin-bottom: 0px;
+}
+
+.alert-danger {
+    border-radius: 4px!important;
+}
+::ng-deep .mat-select-panel {
+    max-width: inherit !important;
+    margin-top: 12%;
+    z-index: 999999;
+}
+
+
+.mat-scroll {
+    overflow: auto;
+}
+
+.data {
+    /* max-width: 1367px; */
+    min-width: 1024px;
+    overflow: auto;
+}
+
+.mat-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 0px 10px;
+    line-break: unset;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    position: sticky;
+    font-size: 12px;
+}
+
+.mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 14px 20px 14px 13px;
+    line-break: unset;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    position: sticky;
+    font-size: 14px;
+}
+
+.mat-row,
+.mat-header-row {
+    display: table-row;
+    width: 450vw;
+    font-size: 13px;
+}
+
+.mat-header-cell:first-child,
+.mat-cell:first-child {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(2),
+.mat-cell:nth-child(2) {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(3),
+.mat-cell:nth-child(3) {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(4),
+.mat-cell:nth-child(4) {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(5),
+.mat-cell:nth-child(5) {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(6),
+.mat-cell:nth-child(6) {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(7),
+.mat-cell:nth-child(7) {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(8),
+.mat-cell:nth-child(8) {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(9),
+.mat-cell:nth-child(9) {
+    flex: 100%;
+    width: 10%;
+}
+
+.mat-header-cell:nth-child(10),
+.mat-cell:nth-child(10) {
+    flex: 100%;
+    width: 10%;
+}
+
+.ml-1,
+.mx-1 {
+    border-radius: 0.5rem;
+    margin-left: 0.35rem !important;
+}
+
+.modal {
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+
+.csv-modal{
+    width: 40% !important;
+}
+
+.main-modal{
+    width: 50% !important;
+}
+
+.btn-modal{
+    padding: 8px 15px !important;
+}
+
+.modal-ti{
+    font-size: 20px !important;
+    font-weight: 500 !important;
+}

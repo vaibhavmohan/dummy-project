@@ -1,0 +1,191 @@
+/* ========================== Login Css ======================= */
+
+.login_css {
+    text-align: center;
+    border-radius: 10px;
+    padding-bottom: 38px !important;
+    box-shadow: none;
+}
+
+.login_css h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.login_css h3 {
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.login_css input {
+    background: #ededed !important;
+    border: none;
+    border-radius: 36px !important;
+    height: 48px;
+    padding: 0px 28px;
+}
+
+::-webkit-input-placeholder {
+    /* Edge */
+    color: #3a3737 !important;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #3a3737 !important;
+}
+
+::placeholder {
+    color: #3a3737 !important;
+}
+
+.page-container {
+    /* background-color: red; */
+    height: 100vh;
+}
+
+.captha img {
+    border-radius: 34px;
+    width: 100%;
+    height: 48px;
+    margin-bottom: 20px;
+}
+
+.refresh-btn {
+    color: #f52b2b;
+    border: none;
+    line-height: 41px;
+    /* padding: 0px 17px; */
+    font-size: 27px;
+    height: 2.875rem;
+    background: none;
+    width: 100%;
+    text-align: center;
+}
+
+.login_bg {
+     // background: linear-gradient( 185deg, #fcfcfc 0%, #fcfcfc 35%, rgb(0 0 0 / 0%) 100%), url(/assets/img/ecom-login-bg.jpg);
+     background:  url('/assets/img/ecom-login-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.padding-0 {
+    padding: 0px;
+}
+
+.imgside {
+    background-image: url("/assets/images/login-side-img.png");
+    text-align: center;
+    /* height: 563px; */
+    height: 476px;
+    background-repeat: no-repeat;
+    line-height: 519px;
+    background-size: 100% 100%;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.imgside img {
+    width: 50%;
+}
+
+.brand-logo {
+    text-align: center;
+}
+
+.brand-logo img {
+    width: 123px;
+}
+
+.auth-form-btn {
+    line-height: 1.5;
+    height: 48px;
+    border-radius: 36px !important;
+    color: #fff;
+    background-color: #283240;
+    border-color: #080b1a;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.login_bttn {
+    margin-top: 20px;
+}
+
+.auth-form-btn:hover {
+    color: #fff;
+    background-color: #080b1a;
+    border-color: #283240;
+}
+
+.welcome-content {
+    margin: 31px 0px;
+}
+
+.forget_pass a {
+    color: #000;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.login-content {
+    display: contents;
+    vertical-align: middle;
+}
+
+.my-container {
+    width: 1262px;
+}
+
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+    .hidden-xs {
+        display: none;
+    }
+    .login_css {
+        border-radius: 10px;
+    }
+    .dashborad {
+        display: none;
+    }
+    .navbar .navbar-brand-wrapper {
+        border: none;
+        padding-left: 3px;
+    }
+    .navbar .navbar-menu-wrapper .navbar-nav .nav-item:last-child {
+        border-left: none;
+    }
+    .from-padding {
+        margin-bottom: 11px;
+    }
+    .padd-zero {
+        padding-right: 14px;
+    }
+    .padd-zero1 {
+        padding-left: 14px;
+    }
+}
+
+.toggle-password-icon {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+/* ======================================= Login Css End ========================================== */

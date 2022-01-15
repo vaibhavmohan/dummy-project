@@ -1,0 +1,61 @@
+<div class="login-container  login_bg">
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Page content -->
+        <div class="page-content login-content">
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <!-- Content area -->
+                <div class="content">
+                    <div class="container my-container">
+                        <div class="row">
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <form [formGroup]="loginForm" novalidate (ngSubmit)="loginUser()">
+                                <div class="panel panel-body login-form login_css">
+                                    <div class="text-center welcome-content">
+                                        <!-- <h4>Welcome to</h4> -->
+                                        <div class="brand-logo"><img src="../../assets/img/logo.png" alt="" /></div>
+                                        <!-- <h3 style="margin-top:20px;">Login</h3> -->
+                                    </div>
+                                    <div *ngIf="isLoginError" class="alert alert-danger">{{errorMsg}}</div>
+                                    <div class="form-group">
+                                        <input formControlName="name" class="form-control form-control-lg" placeholder="User ID" />
+
+                                        <div *ngIf="loginForm.controls['name'].errors && !loginForm.controls['name'].pristine">
+                                            <div style="padding: 4px;" [hidden]="!loginForm.controls['name'].errors.required" class="alert alert-danger">User Id is required.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="position: relative; text-align: left;">
+                                        <input matInput formControlName="password" [type]="passwordType" class="form-control form-control-lg" placeholder="Password" />
+                                        <span [class]="(passwordType == 'password') ? 'fa fa-eye toggle-password-icon' : 'fa fa-eye-slash toggle-password-icon'" (click)="togglePasswordFieldType()" title="{{ ( passwordType == 'password') ? 'Show Password' : 'Hide Password'  }}"></span>
+                                        <div *ngIf="loginForm.controls['password'].errors && !loginForm.controls['password'].pristine">
+                                            <div style="padding: 4px;" [hidden]="!loginForm.controls['password'].errors.required" class="alert alert-danger">Password is required.</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group login_bttn">
+                                        <button [disabled]="isLoader" type="submit" class="btn btn-primary btn-block auth-form-btn">LogIn</button>
+                                    </div>
+
+                                    <!-- <div class="forget_pass"><a routerLink="/forget-password"> Forget Password?</a>
+                                    </div> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /simple login form -->
+                </div>
+                <!-- /content area -->
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+    </div>
+    <!-- /page container -->
+</div>

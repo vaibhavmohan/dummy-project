@@ -1,0 +1,314 @@
+<div *ngIf="isLoadingResults">
+    <app-loader>
+        <mat-spinner></mat-spinner>
+    </app-loader>
+</div>
+<notifier-container></notifier-container>
+<app-header [receivedParentMessage]="receivedParentMessages"></app-header>
+
+<div class="page-container">
+    <!-- Page content -->
+    <div class="page-content">
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+            <!-- Page header -->
+            <div class="page-header page-header-default">
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><i class="fa fa-user"></i>&nbsp;&nbsp;Manage Employee</li>
+                    </ul>
+
+                    <a >
+                        <button type="button"  (click)="openEmpPopup()" title="Create Customer" class="btn pull-right ml-1 btnDesign pull-right create margin_btn_brd">
+                          <i class="icon-user-plus"></i> Add Employee
+                      </button>
+                    </a>
+
+                </div>
+            </div>
+            <!-- /page header -->
+
+            <!-- Content area -->
+            <div class="content">
+                <div class="row">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <i class="icon-filter3"></i>&nbsp;&nbsp; Filters
+                            </h5>
+                        </div>
+
+                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
+
+                            <div class="datatable-header">
+                                <div id="DataTables_Table_0_filter">
+                                    <form class="form-horizontal" [formGroup]="filterFormGroup">
+                                        <div class="col-md-12 no-padding">
+                                            <div class="col-md-10 no-padding">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <label class="w-1">
+                                                            <mat-form-field>
+                                                                <mat-label>Employee Code</mat-label>
+                                                                <mat-select formControlName="username">
+                                                                  <mat-option>None</mat-option>
+                                                                  <mat-option *ngFor="let list of empUserList" [value]="list.code">{{list.code}}</mat-option>
+                                                                </mat-select>
+                                                              </mat-form-field>
+                                                            </label>
+                                                        <label class="w-1">
+                                                            <mat-form-field style="padding-right: 6px;">
+                                                                <input matInput type="text" placeholder="Email" formControlName="email" autocomplete="off" />
+                                                            </mat-form-field>
+                                                        </label>
+                                                       
+                                                        <label class="w-2">
+                                                            <button type="button" (click)="search()"class="btn btnColor btn-xs">
+                                                            <i class="fa fa-search"></i></button>
+                                                        </label>
+    
+                                                        <label class="w-1">
+                                                            <button type="button" class="btn btnColor btn-xs"
+                                                                            (click)="refreshList()">
+                                                                <i class="icon-reset"></i>
+                                                            </button>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="datatable-scroll w-4">
+                                <table mat-table matSort matSortActive="updated_at" matSortDisableClear matSortDirection="desc" [dataSource]="dataSource" class="table datatable-basic dataTable no-footer" [dataSource]="dataSource" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                    <ng-container matColumnDef="name">
+                                        <th mat-header-cell *matHeaderCellDef>Name</th>
+                                        <td *matCellDef="let row" class="mat-cell">{{ row.name }}</td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="username">
+                                        <th mat-header-cell *matHeaderCellDef>Emp Code</th>
+                                        <td *matCellDef="let row" class="mat-cell">{{ row.code ? row.code : "--" }}</td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="email">
+                                        <th mat-header-cell *matHeaderCellDef>Email</th>
+                                        <td *matCellDef="let row" class="mat-cell">
+                                            {{ row.email ? row.email : "--"}}
+                                        </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="contact">
+                                        <th mat-header-cell *matHeaderCellDef>Contact No.</th>
+                                        <td *matCellDef="let row" class="mat-cell">
+                                            {{ row.contact_number ? row.contact_number : "--"}}
+                                        </td>
+                                    </ng-container>
+
+
+                                    <ng-container matColumnDef="updated_at">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Updated At</th>
+                                        <td *matCellDef="let row" class="mat-cell">{{ row.updated_at }}</td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="action">
+                                        <th mat-header-cell *matHeaderCellDef>Action</th>
+                                        <td *matCellDef="let row" class="mat-cell">
+                                            <a><button class="btn btnColor btn-xs" (click)="patchEmp(row)" title="Edit Employee Details"><i class="fa fa-eye"></i></button></a>
+                                            <a class="w-3"><button class="btn btnColor btn-xs" title="Delete Device Catalog" (click)="deleteEmp(row)" ><i class="fa fa-trash" ></i></button></a>
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr role="row" class="clickable odd" mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                                </table>
+                            </div>
+                            <mat-paginator #paginator [length]="dataLength" [pageIndex]="pageIndex" [pageSize]="pageSize"></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+                
+                <ng-template #viewDialog>
+                    <div *ngIf="showMapModal" class="modal fade in modal-cnt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" (click)="closeEmpModal()" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <h4 class="modal-title">{{modalTitle}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="datatable-header">
+                                        <div id="DataTables_Table_0_filter">
+                                            <form class="form-horizontal" [formGroup]="empFormGroup">
+                                                <div class="col-md-12 no-padding">
+                                                    <div class="col-md-12 no-padding">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label>
+                                                                    <mat-form-field style="padding-right: 6px;">
+                                                                        <input matInput type="text" placeholder="Name" formControlName="name" class="upper-case" autocomplete="off" />
+                                                                    </mat-form-field>
+                                                                </label>
+                                                                <label class="w-1">
+                                                                    <mat-form-field  style="padding-right: 6px;">
+                                                                        <input matInput type="text" placeholder="Employee Code" formControlName="username" autocomplete="off" [attr.disabled]="update"/>
+                                                                    </mat-form-field>
+                                                                </label>
+                                                                <label class="w-1">
+                                                                    <mat-form-field style="padding-right: 6px;">
+                                                                        <input matInput type="text" placeholder="Email" formControlName="email" autocomplete="off" />
+                                                                    </mat-form-field>
+                                                                </label>
+                                                                <label class="w-1">
+                                                                    <mat-form-field style="padding-right: 6px;">
+                                                                        <input matInput type="text" placeholder="Contact No." formControlName="contact" autocomplete="off" />
+                                                                    </mat-form-field>
+                                                                </label>
+                                                                
+                                                                
+                                                                <label class="w-1">
+                                                                    <mat-form-field style="padding-right: 6px;">
+                                                                        <input matInput type="password" placeholder="Password" formControlName="password" autocomplete="off" />
+                                                                    </mat-form-field>
+                                                                </label>
+                                                                <label class="w-1">
+                                                                    <mat-form-field style="padding-right: 6px;">
+                                                                        <input matInput type="password" placeholder="Confirm Password" formControlName="conf_password" autocomplete="off" />
+                                                                    </mat-form-field>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 no-padding">
+                                                    <div class="col-md-10 no-padding">
+                                                        <div class="row">
+                                                            <div class="col-md-10">
+                                                            <label class="w-2">
+                                                                <button *ngIf="!update" type="submit" (click)="addEmp()" class="btn btnColor btn-xs">ADD
+                                                            </button>
+                                                            <button *ngIf="update" type="submit" (click)="editEmp()" class="btn btnColor btn-xs">Update
+                                                            </button>
+                                                            </label>
+        
+                                                            <label class="w-1">
+                                                                <button type="button" class="btn btnColor btn-xs"
+                                                                                (click)="clear()">Clear
+                                                                </button>
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                </ng-template>
+                
+                
+                <div *ngIf="showMapModal" class="modal fade in modal-cnt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog main-modal modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" (click)="closeEmpModal()" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                <h4 class="modal-title modal-ti">{{modalTitle}}</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="datatable-header">
+                                    <div id="DataTables_Table_0_filter">
+                                        <form class="form-horizontal" [formGroup]="empFormGroup">
+                                            <div class="col-md-12 no-padding">
+                                                <div class="col-md-12 no-padding">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label class="w-1">
+                                                                <mat-form-field style="padding-right: 6px;">
+                                                                    <input matInput type="text" placeholder="Name" formControlName="name" class="upper-case" autocomplete="off" />
+                                                                </mat-form-field>
+                                                            </label>
+                                                            <label class="w-1">
+                                                                <mat-form-field  style="padding-right: 6px;">
+                                                                    <input matInput type="text" placeholder="Employee Code" formControlName="username" autocomplete="off" [attr.disabled]="update"/>
+                                                                </mat-form-field>
+                                                            </label>
+                                                            <label class="w-1">
+                                                                <mat-form-field style="padding-right: 6px;">
+                                                                    <input matInput type="text" placeholder="Email" formControlName="email" autocomplete="off" />
+                                                                </mat-form-field>
+                                                            </label>
+                                                            <label class="w-1">
+                                                                <mat-form-field style="padding-right: 6px;">
+                                                                    <input matInput type="text" placeholder="Contact No." formControlName="contact" autocomplete="off" />
+                                                                </mat-form-field>
+                                                            </label>
+                                                            <label class="w-1">
+                                                                <mat-form-field style="padding-right: 6px;">
+                                                                    <input matInput type="password" placeholder="Password" formControlName="password" autocomplete="off" />
+                                                                </mat-form-field>
+                                                            </label>
+                                                            <label class="w-1">
+                                                                <mat-form-field style="padding-right: 6px;">
+                                                                    <input matInput type="password" placeholder="Confirm Password" formControlName="conf_password" autocomplete="off" />
+                                                                </mat-form-field>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 no-padding">
+                                                <div class="col-md-10 no-padding">
+                                                    <div class="row">
+                                                        <div class="col-md-10">
+                                                        <label class="w-2">
+                                                            <button *ngIf="!update" type="submit" (click)="addEmp()" class="btn btn-modal btnColor btn-xs">ADD
+                                                         
+                                                        </button>
+                                                        <button *ngIf="update" type="submit" (click)="editEmp()" class="btn btnColor btn-modal btn-xs">Update
+                                                           
+                                                        </button>
+                                                        </label>
+    
+                                                        <label class="w-1">
+                                                            <button type="button" class="btn btn-modal btnColor btn-xs"
+                                                                            (click)="refreshList()">Clear
+                                                               
+                                                            </button>
+                                                        </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /Content area -->
+
+                
+                <app-footer></app-footer>
+            </div>
+            <!-- /main content -->
+            <notifier-container></notifier-container>
+        </div>
+        <!-- /page content -->
+    </div>
+</div>

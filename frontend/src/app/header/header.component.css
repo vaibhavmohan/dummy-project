@@ -1,0 +1,80 @@
+.welcome-admin {
+    display: flex !important;
+    border-left: 1px solid #d8d8d8;
+    padding-left: 10px;
+    height: 58px;
+}
+
+.welcome-admin h4 {
+    text-align: right;
+    font-size: 12px;
+    width: 100%;
+    color: #7b7b7b;
+    line-height: 15px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    padding-top: 4px;
+}
+
+.welcome-admin span {
+    padding: 0px !important;
+    padding-left: 7px !important;
+    color: #000;
+}
+
+.admin-profile img {
+    width: 37px;
+    max-height: 34px !important;
+    border-radius: 100%;
+    background: #45496d;
+    padding: 1px;
+    padding: 6px;
+}
+
+.admin-profile {
+    display: inherit !important;
+    padding-top: 14.5px !important;
+    margin-left: 6px;
+}
+
+.admin-profile i {
+    padding-top: 6px;
+    padding-left: 2px;
+}
+
+.middel-section {
+    width: 55%;
+    float: left;
+    text-align: center;
+}
+
+.middel-section h4 span {
+    border-bottom: 2px solid #c52827;
+    line-height: 15px !important;
+    padding: 20px;
+    font-size: 20px;
+    color: #000;
+}
+
+.ecom-header .navbar-brand {
+    float: left;
+    padding: 8px 50px;
+    font-size: 14px;
+    line-height: 20px;
+    height: 58px;
+    border-right: 1px solid #d8d8d8;
+}
+
+.ecom-header .navbar-brand img {
+    width: 85%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1366px) and (min-width: 1024px) {
+    .middel-section {
+        width: 50% !important;
+        float: left !important;
+        text-align: center;
+    }
+}

@@ -1,0 +1,60 @@
+<!-- Main navbar -->
+<div class="navbar navbar-default header-highlight">
+    <div class="navbar-header ecom-header">
+        <div *ngIf="user_access_role == 1 || user_access_role == 3">
+            <a class="navbar-brand" routerLink="/dashboard"><img src="../../assets/img/dashboard-logo.png" alt="" /></a>
+        </div>
+        <div *ngIf="user_access_role == 2">
+            <a class="navbar-brand" routerLink="/customer-dashboard"><img src="../../assets/img/dashboard-logo.png" alt="" /></a>
+        </div>
+        <div *ngIf="user_access_role == 15">
+            <a class="navbar-brand"><img src="../../assets/img/dashboard-logo.png" alt="" /></a>
+        </div>
+        <ul class="nav navbar-nav visible-xs-block">
+            <li>
+                <a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a>
+            </li>
+            <li>
+                <a href="{{ apk_url }}" target="_blank"><i class="fa fa-mobile"></i>Download SpiceTag APP</a>
+            </li>
+            <li *ngIf="user_access_role != 3">
+                <a routerLink="/warehouse/list"><i class="icon-home5"></i> My Warehouse </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul *ngIf="href!='/gis'" class="nav navbar-nav">
+            <li>
+                <a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a>
+            </li>
+        </ul>
+
+        <div class="middel-section hidden-xs">
+            <h4> <span style="margin-left: 30%">{{receivedParentMessage}}</span></h4>
+        </div>
+
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="dropdown dropdown-user welcome-admin">
+                    <h4> Welcome<br>
+                        <span>{{ user_name }}</span>
+                    </h4>
+                    <a class="dropdown-toggle admin-profile" data-toggle="dropdown">
+                        <img src="assets/images/header-user.png" alt="" />
+
+                        <i class="caret"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a (click)="logout()"><i class="icon-switch2"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /main navbar -->
